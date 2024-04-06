@@ -1,12 +1,6 @@
-import json
 from fastapi import FastAPI
 from pydantic import BaseModel
 import uvicorn
-from contextlib import asynccontextmanager
-from fastapi import FastAPI, Request, status
-from fastapi.responses import JSONResponse
-from pyngrok import ngrok, conf
-import time
 from techcombank import Techcombank,loginTechcombank,sync_balance_techcom_bank,sync_techcom_bank
 
 
