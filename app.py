@@ -6,7 +6,9 @@ from techcombank import Techcombank,loginTechcombank,sync_balance_techcom_bank,s
 
 
 app = FastAPI()
-
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
 class LoginDetails(BaseModel):
     username: str
     password: str
@@ -31,6 +33,7 @@ class Transactions(BaseModel):
     from_date: str
     to_date: str
     limit: int
+    type: str
     
 @app.post('/get_transactions', tags=["get_transactions"])
 def get_transactions_api(input: Transactions):
