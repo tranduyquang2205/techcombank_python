@@ -575,6 +575,7 @@ def loginTechcombank(user):
     refresh_token = user.do_refresh_token()
     if 'access_token' not in refresh_token:
         login = user.do_login()
+        print(login)
         if login['status'] == "PENDING":
             url = login['url']
             i = 1
@@ -665,23 +666,23 @@ def get_key_pos_number(number):
     line = (number - 1) // 3 + 1
     pos = (number - 1) % 3 + 1
     return f"{line}_{pos}"
-# if __name__ == '__main__':
+if __name__ == '__main__':
     # Example usage of the Techcombank class
     # while True:
-    #     # user = Techcombank("0858393379", "Thuan@1704", "19072369596014", "")
-    #     user = Techcombank("0358027860", "Dinh5500@", "19033744815017", "")
+        user = Techcombank("0858393379", "Thuan@1704", "19072369596014", "")
+        # user = Techcombank("0358027860", "Dinh5500@", "19033744815017", "")
 
-    #     #un comment login for first time, after that just call sync_balance_techcom_bank or sync_techcom_bank
+        #un comment login for first time, after that just call sync_balance_techcom_bank or sync_techcom_bank
 
-    #     loginTechcombank(user)
+        loginTechcombank(user)
 
-    #     # balance = sync_balance_techcom_bank(user)
-    #     # print(balance)
-    #     transactions = sync_techcom_bank(user,"2024-04-01","2024-04-04",10000000)
-    #     print(transactions)
-    #     file_path = "output_tcb_04.04.json"
-    #     with open(file_path, 'w') as json_file:
-    #         json.dump(transactions, json_file, indent=4)
+        balance = sync_balance_techcom_bank(user)
+        print(balance)
+        transactions = sync_techcom_bank(user,"2024-04-01","2024-04-04",10000000)
+        print(transactions)
+        file_path = "output_tcb_04.04.json"
+        with open(file_path, 'w') as json_file:
+            json.dump(transactions, json_file, indent=4)
 
-    #     print(f"JSON data has been saved to {file_path}")
-    #     time.sleep(30)
+        print(f"JSON data has been saved to {file_path}")
+        time.sleep(30)
